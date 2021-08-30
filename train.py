@@ -19,6 +19,7 @@ assert torch.__version__.split('.')[0] == '1'
 
 print('CUDA available: {}'.format(torch.cuda.is_available()))
 
+path_save = "/content/drive/MyDrive/İNAN/UlaşımdaYapayZeka/DATA/"
 batch_size_train = 4
 batch_size_val = 4
 
@@ -171,11 +172,11 @@ def main(args=None):
 
         scheduler.step(np.mean(epoch_loss))
 
-        torch.save(retinanet.module, '{}_retinanet_{}.pt'.format(parser.dataset, epoch_num))
+        torch.save(retinanet.module, path_save + '{}_retinanet_{}.pt'.format(parser.dataset, epoch_num))
 
     retinanet.eval()
 
-    torch.save(retinanet, 'model_final.pt')
+    torch.save(retinanet, path_save + 'model_final.pt')
 
 
 if __name__ == '__main__':
